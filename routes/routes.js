@@ -1,6 +1,9 @@
 var Express =require('express');
 var {studentModel}=require('../models/studentmodel');
 const router =Express.Router();
+router.get('/',(req,res)=>{
+    res.send(" student details");
+})
 router.get('/display',(req,res)=>{
     res.send("display portal");
 });
