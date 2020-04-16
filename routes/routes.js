@@ -75,9 +75,20 @@ router.post('/update',(req,res)=>{
             res.json({"status":"success"});    
            }
        }) 
-    } catch () {
-        
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
     }
-})
-
+});
+router.post('/delete',(req,res)=>{
+    studentModel.findByIdAndDelete(req.body._id),(error,data)=>{
+        if (error) {
+            res.json({"status":"errror"});
+        } else {
+            if(data.length>0){
+         res.json({"status":"success"});  
+            }  
+        }
+    }
+});
 module.exports=router;
