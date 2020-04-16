@@ -66,5 +66,18 @@ router.post('/search1',(req,res)=>{
         
     }
 });
+router.post('/update',(req,res)=>{
+    try {
+       studentModel.findOneAndUpdate({adminNo:req.body.adminNo},req.body,(error,data)=>{
+           if (error) {
+               res.json({"status":"errror"});
+           } else {
+            res.json({"status":"success"});    
+           }
+       }) 
+    } catch () {
+        
+    }
+})
 
 module.exports=router;
